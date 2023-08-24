@@ -1,0 +1,36 @@
+model_parameters:
+    nn_layer:
+      - name: Conv2D
+        other_settings: 32, (3, 3) 
+        activation: "'relu'"
+        kernel_initializer: "'he_uniform'"
+        input_shape: '(28, 28, 1)'
+
+      - name: MaxPooling2D
+        other_settings: '(2, 2)'
+
+      - name: Flatten
+
+      - name: Dense
+        other_settings: '100'
+        activation: "'relu'"
+        kernel_initializer: "'he_uniform'"
+
+      - name: Dense
+        other_settings: '10'
+        activation: "'softmax'"
+
+    optimizer:
+        name: 'SGD'
+        learning_rate: '0.01'
+        momentum: '0.9'
+
+    model_compile:
+        optimizer: ''
+        loss: "'categorical_crossentropy'"
+        metrics: "['accuracy']"
+
+train_model_settings:
+    n_folds: 5
+    epochs: 10
+    batch_size: 32
