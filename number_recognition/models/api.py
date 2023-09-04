@@ -10,7 +10,7 @@ import argparse
 import pkg_resources
 
 # import project's config.py
-import model_utils as mutils
+
 from aiohttp.web import HTTPBadRequest
 
 from functools import wraps
@@ -28,7 +28,7 @@ sys.path.append(base_directory + "/number_recognition/models")
 # next import cannot be at the begin of script due to
 # missing paths - look commands sys.path.append(...)
 import number_recognition.config as cfg
-
+import number_recognition.models.model_utils as mutils
 # sys.path.append(base_directory + "/flaat")
 
 
@@ -88,6 +88,7 @@ def get_metadata():
     """
 
     module = __name__.split(".", 1)
+    module = ["py"]
 
     try:
         pkg = pkg_resources.get_distribution(module[0])
@@ -96,6 +97,8 @@ def get_metadata():
         distros = list(pkg_resources.find_distributions(cfg.BASE_DIR, only=True))
         if len(distros) == 1:
             pkg = distros[0]
+        else:
+            pkg = pkg_resources.find_distributions(cfg.BASE_DIR, only=True)
     except Exception as e:
         raise HTTPBadRequest(reason=e)
 
