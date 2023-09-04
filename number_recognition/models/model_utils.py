@@ -3,7 +3,7 @@ import subprocess
 import warnings
 import os
 import yaml
-import config as cfg
+import number_recognition.config as cfg
 import cv2
 import numpy as np
 from sklearn.model_selection import KFold
