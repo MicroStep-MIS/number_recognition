@@ -19,11 +19,9 @@ if "APP_INPUT_OUTPUT_BASE_DIR" in os.environ:
     if os.path.isdir(env_in_out_base_dir):
         IN_OUT_BASE_DIR = env_in_out_base_dir
     else:
-        msg = (
-            '[WARNING] "APP_INPUT_OUTPUT_BASE_DIR='
-            + '{}" is not a valid directory! '.format(env_in_out_base_dir)
-            + 'Using "BASE_DIR={}" instead.'.format(BASE_DIR)
-        )
+        msg = '[WARNING] "APP_INPUT_OUTPUT_BASE_DIR='
+        msg = msg + '{}" is not a valid directory! '.format(env_in_out_base_dir)
+        msg = msg + 'Using "BASE_DIR={}" instead.'.format(BASE_DIR)
         print(msg)
 
 DATA_DIR = os.path.join(BASE_DIR, "data")
